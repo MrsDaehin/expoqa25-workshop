@@ -1,31 +1,9 @@
 # Workshop with Kubernetes
 
 Welcome to this workshop.
-The workshop is associated with a [slide deck](https://docs.google.com/presentation/d/1_D3Zu39ZXIvphwdzusbF-u52lRTD10vB9q44EhgC13A/edit?usp=sharing).
+The workshop is associated with a [slide deck](https://docs.google.com/presentation/d/1ahLGbzdvkW14ABte-VKvMXuZ95SnpA09ra6t5Xjode0/edit?usp=sharing).
 Material used in the workshop is based on different examples from github, articles and kubernetes.io
 
-## Agenda
-
-- Introduction to me/us
-
-  - `whoami` (who is talking) and `which` (what are we doing and why)
-- Why do you want to work with Cloud Native?
-
-  First and foremost: You will be working with Cloud Native.
-
-  Regardless of what you will be doing:
-
-  - developer
-  - designer
-  - relliability engineer
-  - data scientist
-  - electronics engineeer
-    There will be Cloud Native Technology in code close to you.
-- Where can you learn more about Cloud Native?
-
-  - Cloud Native Meetup Community
-  - Experiment with it yourself on your laptop using e.g. kind (Kubernetes in Docker), minikube ...
-  - Work someplace where they work with Kubernetes and other Cloud Native technologies are used for real (and secure) applications
 
 ## Prerequisites
 
@@ -124,19 +102,12 @@ For other ways of installing `kubectl` in Windows see [Install and Set Up kubect
 
 ## Microservice Source
 
-The source for the microservice application can be found in the [`source`](source) directory. This three-service application utilizes a [PostgreSQL](https://www.postgresql.org/) database and an [AMQP](https://www.amqp.org/) bus to store data.
+TODO
+### Lens or OpenLens
 
-The services are written in [JavaScript](https://www.javascript.com/) and execute under [NodeJS](https://nodejs.org/en) inside [Docker](https://www.docker.com/products/docker-desktop/) containers.
+Originally [openlens]https://github.com/MuhammedKalkan/OpenLens) was used to browse the Kubernetes cluster and manage the deployment. It is no longer maintained, but still works, however it is not maintained and does not support the latest Kubernetes versions.
 
-The [`requester`](source/mythical-beasts-requester/index.js) service makes 'random' requests to the [`server`](source/mythical-beasts-server/index.js), which then inserts, retrieves or deletes data from the Postgres database. The `requester` service also stores data to the AMQP queue via the [`recorder`](source/mythical-beasts-recorder/index.js) service.
-
-All three services use common code to deal with the [`queue`](source/common/queue.js), [`logging`](source/common/logging.js) and [`tracing`](source/common/tracing.js) requirements they have. The latter is an example of a simple shim API library for utilising the OpenTelemetry SDK in an application.
-
-There is a common [`Dockerfile`](source/docker/Dockerfile) that is used to build all three services.
-
-An example pipeline stage in Alloy to rewrite timestamps can be enabled by uncommenting the `TIMESHIFT` environment variable for the `mythical-requester` service. See details in the [Alloy configuration file](alloy/config.alloy).
-
-
+For educational purposes, we will use [Lens](https://k8slens.dev/) instead.
 
 ### k9s
 
@@ -221,24 +192,7 @@ There are some few thing that may work in a different way under windows.
 
 You may want to copy the lines from the shell scripts under each folder instead using the scripts:
 
-- create_cluster.sh which would be e.g. `kind create cluster --name workshop --config=kind-config.yaml`
-- delete_cluster.sh which would be e.g. `kind delete cluster --name workshop`
-  when creating and deleting local clusters.
 
-The gatering of metrics in the observability workshop may not work for you, as grafana does not pick up the metrics.
-
-## If you experience an older kind kubernetes version
-
-You can add to the config yaml file, under nodes:
-
-```yaml
-kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
-nodes:
-- role: control-plane
-- role: worker
-  image: kindest/node:v1.25.3
-```
 
 ## If you want to play more with Kubernetes
 
@@ -259,3 +213,11 @@ There are some articles that you can follow if you want to do more:
 - https://williamlam.com/2020/06/interesting-kubernetes-application-demos.html
 - https://github.com/Jorricks/Whac-a-mole-kubernetes
 - https://github.com/luxas/kubeadm-workshop
+
+
+Thanks to the guys from which i took a lot of inspiration for this workshop.
+If you want to learn more about Kubernetes, please do take a look at the following:
+
+https://github.com/neticdk/k8s-workshop/blob/main/README.md
+
+they include their slide deck and also some videos.
