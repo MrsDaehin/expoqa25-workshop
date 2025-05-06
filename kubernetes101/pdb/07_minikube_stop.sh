@@ -1,0 +1,1 @@
+minikube stop -p k8s-pdb
