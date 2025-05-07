@@ -1,0 +1,28 @@
+controller:
+  config: 
+    custom-http-errors: "404,503"
+  replicaCount: 2
+  metrics:
+    enabled: true
+    service:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "10254"
+defaultBackend:
+  enabled: true
+  image:
+    registry: k8s.gcr.io
+    image: ingress-nginx/nginx-errors
+    tag: "0.48.1"
+  extraVolumes:
+  - name: custom-error-pages
+    configMap:
+      name: custom-error-pages
+      items:
+      - key: "404"
+        path: "404.html"
+      - key: "503"
+        path: "503.html"
+  extraVolumeMounts:
+  - name: custom-error-pages
+    mountPath: /www

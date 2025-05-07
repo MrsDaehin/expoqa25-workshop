@@ -1,3 +1,40 @@
+
+
+## Connectivity to the Cluster
+
+We have used `kubectl` to retrieve information from the running cluster. It turns out that
+`minikube` added entries into a default configuration for Kubernetes command line tooling such
+that the tooling may connect to the cluster.
+
+The `config` sub-command of `kubectl` can be used to view the configuration entries.
+The configuration may contain a number of different contexts and the one we are currently using
+can be found with:
+
+```console
+kubectl config current-context
+```
+
+Btw. what other contexts do we have?
+
+```console
+kubectl config get-contexts
+```
+
+Current context is normally in this workshop `minikube`.
+
+```console
+kubectl config view | grep minikube
+```
+
+If you happen to work on windows and did not install grep, you may use:
+
+```console
+kubectl config view | Findstr minikube
+```
+
+
+
+
 ## Get nodes
 
 ```
@@ -10,6 +47,19 @@ kubectl get nodes --help
 kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
 kubectl get deployments
 ```
+
+So what happened:
+
+```console
+kubectl get events
+```
+
+To further explore what `kubectl` can do for you
+
+```console
+kubectl --help
+```
+
 
 ### Open a second terminal to run the proxy
 
@@ -154,81 +204,18 @@ kubectl delete deployments/kubernetes-bootcamp services/kubernetes-bootcamp
 
 There are two fundamental ways to work with kubernetes:
 
-- the imperative way
-- the declarative way
+- the imperative way  that we have just seen 
+- the declarative way that we will see in this section
 
 where the declarative way seems to be the way most people want to work with it in a real life scenario.
 
 The following examples will show both ways of working. Lets see the differences between the two.
 
 
-# Lets work with the imperative paradigm
 
 ## Deploy an Application
 
-We deploy an application:
 
-```console
-kubectl create deployment hello-app --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
-```
-
-You cannot yet connect to the application, however you will be able to once a portforward has been created, which will happer later.
-
-We check that the application was created:
-
-```console
-kubectl get deployments
-```
-
-The deployment is actually controlling a container which exists inside a pod
-
-```console
-kubectl get pods
-```
-
-So what happened:
-
-```console
-kubectl get events
-```
-
-To further explore what `kubecetl` can do for you
-
-```console
-kubectl --help
-```
-
-## Connectivity to the Cluster
-
-We have used `kubectl` to retrieve information from the running cluster. It turns out that
-`kind` added entries into a default configuration for Kubernetes command line tooling such
-that the tooling may connect to the cluster.
-
-The `config` sub-command of `kubectl` can be used to view the configuration entries.
-The configuration may contain a number of different contexts and the one we are currently using
-can be found with:
-
-```console
-kubectl config current-context
-```
-
-Btw. what other contexts do we have?
-
-```console
-kubectl config get-contexts
-```
-
-Current context is normally in this workshop `minikube`.
-
-```console
-kubectl config view | grep minikube
-```
-
-If you happen to work on windows and did not install grep, you may use:
-
-```console
-kubectl config view | Findstr minikube
-```
 
 ## Expose the Application
 

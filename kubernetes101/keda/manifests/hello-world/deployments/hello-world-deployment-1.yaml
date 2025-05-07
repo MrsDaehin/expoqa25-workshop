@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-world-one
+  name: hello-world-one
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-world-one
+  template:
+    metadata:
+      labels:
+        app: hello-world-one
+    spec:
+      containers:
+      - image: cloudacode/hello-go-app:v1.0.0
+        name: hello-go-app
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 20Mi
