@@ -4,7 +4,6 @@ Welcome to this workshop.
 The workshop is associated with a [slide deck](https://docs.google.com/presentation/d/1ahLGbzdvkW14ABte-VKvMXuZ95SnpA09ra6t5Xjode0/edit?usp=sharing).
 Material used in the workshop is based on different examples from github, articles and kubernetes.io
 
-
 ## Prerequisites
 
 These are the things that you would have to install on your machine to run the examples.
@@ -38,6 +37,26 @@ brew install --cask docker
 ```
 choco install docker-desktop
 ```
+
+### Kubernetes in Docker (kind)
+
+[](https://github.com/neticdk/k8s-workshop/blob/main/README.md#kubernetes-in-docker-kind)
+
+We will be running a local Kubernetes cluster based on the Kubernetes distribution called [kind](https://kind.sigs.k8s.io/) - which is short for Kubernetes in Docker. This can be installed using most package managers.
+
+**brew**
+
+```
+brew install kind
+```
+
+**choco**
+
+```
+choco install kind
+```
+
+**Other**
 
 ### Git CLI
 
@@ -103,6 +122,7 @@ For other ways of installing `kubectl` in Windows see [Install and Set Up kubect
 ## Microservice Source
 
 TODO
+
 ### Lens or OpenLens
 
 Originally [openlens]https://github.com/MuhammedKalkan/OpenLens) was used to browse the Kubernetes cluster and manage the deployment. It is no longer maintained, but still works, however it is not maintained and does not support the latest Kubernetes versions.
@@ -192,8 +212,6 @@ There are some few thing that may work in a different way under windows.
 
 You may want to copy the lines from the shell scripts under each folder instead using the scripts:
 
-
-
 ## If you want to play more with Kubernetes
 
 [Kubernetes Playground](https://Kubernetes.io/docs/tutorials/kubernetes-basics/)
@@ -213,7 +231,6 @@ There are some articles that you can follow if you want to do more:
 - https://williamlam.com/2020/06/interesting-kubernetes-application-demos.html
 - https://github.com/Jorricks/Whac-a-mole-kubernetes
 - https://github.com/luxas/kubeadm-workshop
-
 
 Thanks to the guys from which i took a lot of inspiration for this workshop.
 If you want to learn more about Kubernetes, please do take a look at the following:

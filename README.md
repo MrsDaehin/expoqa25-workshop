@@ -38,6 +38,6 @@ Implementar y configurar Monitorización y Profiling
 	Instalar Prometheus y Grafana para monitorización.
 	Recoger y analizar performance metrics para identificar cuellos de botella. 
 	
-Los tests los realizaremos con K6 en local y el SUT será un K8s local ( minikube con dos nodos ) o killercoda.com en Internet
+Los tests los realizaremos con K6 en local y el SUT será un K8s local ( kind y minikube con dos nodos ) o killercoda.com en Internet
 	
 https://killercoda.com/playgrounds/scenario/kubernetes
